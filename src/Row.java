@@ -17,6 +17,7 @@ public class Row implements Runnable{
 
     public void run() {
         for(int i =0; i < 9; i++){
+            System.out.println("Checking row: " + (i+1) );
             HashMap<Integer, ArrayList<Location>> locHash = new HashMap<>();
             for (int j = 0; j < 9; j++){
                 if(locHash.containsKey(grid[i][j])){

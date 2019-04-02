@@ -1,7 +1,5 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.regex.*;
 
 public class sudokuSolver {
 
@@ -77,7 +75,7 @@ public class sudokuSolver {
         }
     }
 
-    public static int missingNum(Location loc, int[][] grid) {
+    private static int missingNum(Location loc, int[][] grid) {
         int missingN = -1;
         int [] testArray = new int[9];
         for(int k =0; k <9; k++){

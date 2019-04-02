@@ -17,6 +17,7 @@ public class Column implements Runnable{
 
     public void run() {
         for(int j =0; j < 9; j++){
+            System.out.println("Checking column " + (j+1));
             HashMap<Integer, ArrayList<Location>> locHash = new HashMap<>();
             for (int i = 0; i < 9; i++){
                 if(locHash.containsKey(grid[i][j])){

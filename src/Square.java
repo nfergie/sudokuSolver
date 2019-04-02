@@ -15,8 +15,11 @@ public class Square implements Runnable{
     }
 
     public void run() {
+        int counter = 1;
         for(int n= 0; n< 3; n++){
             for(int m =0; m < 3; m++){
+                System.out.println("Checking square " + counter);
+                counter++;
                 HashMap<Integer, ArrayList<Location>> locHash = new HashMap<>();
                 for (int i = 0; i < 3; i++){
                     int ni = 3* m + i;
