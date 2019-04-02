@@ -44,10 +44,30 @@ public class sudokuSolver {
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }
-                ArrayList<Location> l = s.getErrors();
-                for(Location locs : l){
-                    System.out.println(locs.col + ", " + locs.row);
+
+                //check if errors occured
+                if(c.getErrors().size() > 0){
+                    ArrayList<Location> errorLoc = new ArrayList<>();
+                    for(Location l : c.getErrors()){
+                        if(r.getErrors().contains(l)){
+                            errorLoc.add(l);
+                        }
+                    }
+                    for(Location error : errorLoc){
+                        System.out.print("An error occured at (row, col) : ");
+                        System.out.println((error.row+1) + ", " + (error.col+1));
+                        System.out.print("Please change cell " + (error.row+1) + ", "+ (error.col+1) +" to : " );
+                        System.out.println(missingNum(error, grid));
+                    }
+
+
+
+
                 }
+                else{
+                    System.out.println("No errors were found in this puzzle");
+                }
+
 
             }catch (IOException e){
                 e.printStackTrace();
@@ -55,5 +75,22 @@ public class sudokuSolver {
         }else{
             System.out.println("System requires input file");
         }
+    }
+
+    public static int missingNum(Location loc, int[][] grid) {
+        int missingN = -1;
+        int [] testArray = new int[9];
+        for(int k =0; k <9; k++){
+            testArray[grid[loc.row][k]-1]++;
+            testArray[grid[k][loc.col]-1]++;
+        }
+        for(int i=0; i < 9; i++){
+            if(testArray[i] == 0){
+                missingN = i+1;
+            }
+        }
+
+
+        return missingN;
     }
 }
